@@ -1,0 +1,11 @@
+/****************************************
+PRIMARY STYLES
+****************************************/
+body {
+    padding: 0.500em;
+    font-family: ubuntu-condensed, serif;
+}
+
+#primary {
+    margin-top: 4em;
+}
