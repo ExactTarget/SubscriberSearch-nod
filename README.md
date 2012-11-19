@@ -3,7 +3,6 @@
 
 SubscriberSearch-nod is an example application which illustrates how to create a Hub Exchange application utilizing Single Sign-on (SSO) for ExactTarget's Interactive Marketing Hub.
 
-
 ##Requirements
 ----------
 * Access to App Center on http://code.exacttarget.com
