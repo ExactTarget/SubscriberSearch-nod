@@ -7,8 +7,6 @@ define([
         initialize: function() {
         }
 
-        // This will be used later when we need to update a subscriber
-        // status
         , url: function() {
             return '//localhost:3000/updateSubscriberStatus';
         }

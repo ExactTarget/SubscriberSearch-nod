@@ -18,13 +18,16 @@ define([
                 , '_updateDetails'
             );
 
-            // This collection will act as the datagrid datasource
             this.subscriberCollection = new SubscriberCollection({
                 columns: [
                     { property: 'emailAddress', label: 'Email Address', sortable: true },
                     { property: 'fullName', label: 'Full Name', sortable: true },
+                    //{ property: 'subscriberKey', label: 'Subscriber Key', sortable: false },
                     { property: 'viewDetails', label: '', sortable: false },
+                    //{ property: 'isValid', label: '', sortable: false },
                     { property: 'status', label: 'Status', sortable: true },
+                    //{ property: 'emailTypePreference', label: 'Email Type', sortable: true },
+                    //{ property: 'created', label: 'Created', sortable: true}
                 ]
                 , formatter: function( items ) {
                     $.each( items, function( index, item ) {
@@ -36,8 +39,6 @@ define([
                 }
             });
 
-            // Bind to the collection's sync so when the details panel
-            // saves data, the grid re-renders
             this.subscriberCollection.bind( 'sync' , function() {
                 $( '#subscriberGrid' ).datagrid( 'renderData' );
             } );
@@ -50,7 +51,6 @@ define([
         }
 
         , clean: function() {
-            // Tidy up
         }
 
         , events: {
@@ -61,20 +61,16 @@ define([
             this.clean();
 
             var templateObj = {};
-            // The following are used for the datagrid UI
             templateObj.gridTitle = 'Subscriber Listings';
             templateObj.searchPlaceholder = 'Search for subscribers';
 
             $(this.el).html( Mustache.to_html( SubscriberGridView, templateObj ) );
 
-            // Instantiate the datagrid and provide this view's
-            // collection as its datasource
             $('#subscriberGrid').datagrid({
                 dataSource: this.subscriberCollection
             });
         }
 
-        // Pass the selected model to the subscriberDetails model
         , _updateDetails: function( evt ) {
             var model = this.subscriberCollection.where({ 'subscriberId': evt.currentTarget.id });
             this.lastSelectedSubscriberId = evt.currentTarget.id;
