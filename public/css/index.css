@@ -1,3 +1,14 @@
 /**********************
 INDEX STYLES
 **********************/
+#ss-loading {
+    bottom: 0;
+    height: 200px;
+    left: 0;
+    margin: auto;
+    position: absolute;
+    top:0;
+    right: 0;
+    width: 200px;
+    text-align: center;
+}

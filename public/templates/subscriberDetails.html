@@ -1,0 +1,20 @@
+<dl>
+    <dt>Full Name</dt>
+    <dd>{{firstName}} {{lastName}}</dd>
+    <dt>Email</dt>
+    <dd>{{emailAddress}}</dd>
+    <dt>Subscriber Key</dt>
+    <dd>{{subscriberKey}}</dd>
+    <dt>Created</dt>
+    <dd>{{created}}</dd>
+    <dt>Status</dt>
+</dl>
+<div id="statusCombo" class="input-append dropdown combobox" style="width: 80%; margin-top: 0;">
+    <input class="span2" style="width: 50%;" id="statusValue" type="text" value="{{status}}"><button class="btn" data-toggle="dropdown"><i class="caret"></i></button>
+    <ul class="dropdown-menu">
+        <li><a href="#">Active</a></li>
+        <li><a href="#">Unsubscribed</a></li>
+    </ul>
+
+<button class="btn btn-primary pull-right" id="saveStatus">Update Status</button>
+</div>

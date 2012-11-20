@@ -3,8 +3,8 @@
  */
 exports.index = function(req, res){
   res.render('index', {
-    title: 'Subscriber Search'
-    , appName: 'Subscriber Search'
+    title: 'Subscriber Search - Node.js Version'
+    , appName: 'Node.js Version'
     , sidebarTitle: 'Subscriber Details'
     , accessToken: req.session.token
     , expiration: req.session.expiration

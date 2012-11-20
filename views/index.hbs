@@ -1,6 +1,20 @@
 {{#extend "stylesheets"}}
 <link rel="stylesheet" href="/css/index.css"/>
 {{/extend}}
-<div class="container-fluid" id="primary">
-{{{content}}}
+<div style="display: none;" id="accessToken">{{accessToken}}</div>
+<div style="display: none;" id="tokenExpiration">{{tokenExpiration}}</div>
+<div class="navbar navbar-inverse navbar-fixed-top" id="app-nav">
+    <div class="navbar-inner">
+        <div class="container-fluid">
+            <a class="brand" href="/">{{appName}}</a>
+        </div>
+    </div>
 </div>
+<div class="container-fluid" id="primary">
+    <div id="ss-loading">
+        <h1>Loading...</h1>
+    </div>
+</div>
+{{#extend "scripts"}}
+<script src="/js/base.js"></script>
+{{/extend}}
