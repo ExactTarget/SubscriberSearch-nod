@@ -26,16 +26,20 @@ The Subscriber Search app you'll be building offers beneficial functionality; ho
 * Volo installed locally
 
 ##Running Sample Apps
-Nearly every sample application we provide will require your API Keys (clientId, clientSecret) and the proper understanding of how to use these assets, please make sure you take time to review our [App Center tutorial].
+Nearly every sample application we provide will require your API Keys (clientId, clientSecret) and the proper understanding of how to use these assets, please make sure you take time to review our [App Center tutorial](http://code.exacttarget.com/devcenter/getting-started/app-center-overview "App Center Overview").
 
 ##Requirements
-* Access to App Center on http://code.exacttarget.com
+* An ExactTarget Production Account
+* Access to App Center on
+* [http://code.exacttarget.com](http://code.exacttarget.com)
 * Node.js v0.8.9+
-* ExpressJS (framework understanding)
+* ExpressJS
 
 ##Quick start
 * Clone the repo onto your local computer.
-* Create a new Hub Exchange application in App Center [needs link to App Center Directions]
+		- (http): https://github.com/ExactTarget/SubscriberSearch-nod.git
+		- (ssh): git@github.com:ExactTarget/SubscriberSearch-nod.git
+* Create a new Hub Exchange application in [App Center](http://code.exacttarget.com/devcenter/getting-started/app-center-overview/registering-app)
 
 ### Application Paths 
 
@@ -71,4 +75,4 @@ Nearly every sample application we provide will require your API Keys (clientId,
 		* Fuel Platform API implementation
 		* ExactTarget SOAP API implementation
 
-For more information about setting up an applcation in App Center, please see http://code.exacttarget.com/devcenter/????
+For more information about setting up an applcation in App Center, please see [http://code.exacttarget.com/devcenter/getting-started/app-center-overview/](http://code.exacttarget.com/devcenter/getting-started/app-center-overview/)
