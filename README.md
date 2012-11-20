@@ -1,4 +1,4 @@
-#SubscriberSearch-nod
+#SubscriberSearch-nod(e)
 =================
 
 SubscriberSearch-nod is an example application which illustrates how to create a Hub Exchange application utilizing Single Sign-on (SSO) for ExactTarget's Interactive Marketing Hub.
@@ -37,8 +37,10 @@ Nearly every sample application we provide will require your API Keys (clientId,
 
 ##Quick start
 * Clone the repo onto your local computer.
+
 		- (http): https://github.com/ExactTarget/SubscriberSearch-nod.git
 		- (ssh): git@github.com:ExactTarget/SubscriberSearch-nod.git
+
 * Create a new Hub Exchange application in [App Center](http://code.exacttarget.com/devcenter/getting-started/app-center-overview/registering-app)
 
 ### Application Paths 
