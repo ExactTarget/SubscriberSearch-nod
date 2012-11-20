@@ -6,6 +6,7 @@ var express         = require( 'express' )
     , fs            = require( 'fs' )
     , hbs           = require( 'hbs' )
     , http          = require( 'http' )
+    , https         = require( 'https' )
     , jwt           = require( 'jwt-simple' )
     , path          = require( 'path' )
     , routes        = require( './routes' )
@@ -119,6 +120,7 @@ app.post('/login', function( req, res ) {
                     req.session.soap = responseData.soap;
                     req.session.rest = responseData.rest;
                     res.redirect( '/' );
+                    console.log( responseData );
                 });
             });
 
