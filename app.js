@@ -84,22 +84,11 @@ app.post('/login', function( req, res ) {
         if( decodedJWT ) {
             req.session.token = decodedJWT.request.user.oauthToken;
             req.session.tokenExpiration = decodedJWT.exp;
-
-            var str = '<div style="padding: 20px;"><strong>Encoded JWT</strong>';
-            str += '<div style="word-wrap: break-word; margin-bottom: 30px;">';
-            str += encodedJWT;
-            str += '</div>';
-            str += '<strong>Decoded JWT</strong>';
-            str += '<div style="width: 80%;"><code><pre>';
-            str += JSON.stringify( decodedJWT, null, 4 );
-            str += '</pre></code></div>';
-            str += '</div>';
         }
 
         if( req.session.token ) {
             res.render( 'index', {
                 appName: 'Subscriber Search'
-                , content: str
             });
         }
     }
