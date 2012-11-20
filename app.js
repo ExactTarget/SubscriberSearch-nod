@@ -83,13 +83,50 @@ app.post('/login', function( req, res ) {
         // Sanity Check for SSO via HUB
         if( decodedJWT ) {
             req.session.token = decodedJWT.request.user.oauthToken;
+            req.session.internalOauthToken = decodedJWT.request.user.internalOauthToken;
+            req.session.refreshToken = decodedJWT.request.user.refreshToken;
             req.session.tokenExpiration = decodedJWT.exp;
         }
 
         if( req.session.token ) {
-            res.render( 'index', {
-                appName: 'Subscriber Search'
+            // Make call to obtain the endpoints
+            var optionsObj = {
+                'hostname': 'www.exacttargetapis.com',
+                'port': 443,
+                'path': '/platform/v1/endpoints?access_token=' + req.session.token,
+                'method': 'GET',
+                'headers': {
+                    'Content-Type': 'application/json',
+                    'Encoding': 'utf-8'
+                }
+            };
+
+            // Mount the endpoints through this request in the session
+            var PlatformRequest = https.request( optionsObj, function( response ) {
+                var data = {}
+                    responseData = {}
+                    ;
+
+                response.on( 'data', function( chunk ) {
+                    data = JSON.parse( chunk );
+                    for( var i = 0; i < data.items.length; i++ ) {
+                        var type = data.items[i].type.replace( /\s+/g, '' );
+                        responseData[ type ] = data.items[i].url;
+                    }
+                });
+
+                response.on( 'end', function() {
+                    req.session.soap = responseData.soap;
+                    req.session.rest = responseData.rest;
+                    res.redirect( '/' );
+                });
             });
+
+            PlatformRequest.on( 'error', function( e ) {
+                res.json( 500, e );
+            });
+
+            PlatformRequest.end();
         }
     }
 });
