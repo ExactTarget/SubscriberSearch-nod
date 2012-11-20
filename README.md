@@ -34,8 +34,8 @@ Nearly every sample application we provide will require your API Keys (clientId,
 * ExpressJS (framework understanding)
 
 ##Quick start
-1. Clone the repo onto your local computer.
-2. Create a new Hub Exchange application in App Center [needs link to App Center Directions]
+* Clone the repo onto your local computer.
+* Create a new Hub Exchange application in App Center [needs link to App Center Directions]
 
 ### Application Paths 
 
@@ -43,27 +43,17 @@ Nearly every sample application we provide will require your API Keys (clientId,
         Home URL    : http://localhost:3000
         Logout URL  : http://localhost:3000/logout
 
-4. Update the app-config.js file with the following app information:
+* Publish your app in app center (this makes it available in the HUB
+* Update the app-config.js file with the following app information (values for these come from App Center):
 
-		* Client ID
-		* Client Secret
-		* App Signature
+		Client ID
+		Client Secret
+		App Signature
 
-## Touchpoints
-* App Center utilization
-	* Creating an app in App Center
-	* Defining our app's endpoints
-	* Application Keys / Signature definitions
-* Subscriber Search App build up
-	* Server-side
-		* Login URL
-		* Redirect URL
-		* Logout URL
-		* Implementing the JWT (JSON Web Token)
-	* Client-side
-		* Fuel UX implementation
-		* Fuel Platform API implementation
-		* ExactTarget SOAP API implementation
+* Commit your changes
+* Start your app locally by running the command:
+		node app
+* Login to the Interactive Marketing Hub and then click your app
 
 ## Touchpoints
 * App Center utilization
