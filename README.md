@@ -5,11 +5,11 @@ SubscriberSearch-nod is an example application which illustrates how to create a
 
 This sample app provides assets and examples that  demonstrate the basics of how to create a user-contextualized Subscriber Search app which implement ExactTarget's Fuel Platform.
 
-Prior to working with these exempts, you should thoroughly feel confident in using App Center [URL to App Center documentation]. App Center is the your primary interface to register as a developer and define applications upon which you can then build.
+Prior to working with these examples, you should feel confident using App Center [URL to App Center documentation]. App Center is the your primary interface to register as a developer and define applications upon which you can then build.
 
 The source code for these sample applications are open sourced and the code provided is intended to quickly enable you with the core concepts of developing apps with ExactTarget.
 
-The Subscriber Search app you'll be building through these tutorials offer beneficial functionality; however these tutorials should be considered proof of concept style coding and there may additional security / performance steps that are outside the scope of it's purpose.
+The Subscriber Search app you'll be building offers beneficial functionality; however the Sample Apps should be considered proof of concept style coding and there may additional security / performance steps that are outside the scope of it's purpose.
 
 ##Prerequisites (basic understanding of the following):
 * (x)HTML(5)
