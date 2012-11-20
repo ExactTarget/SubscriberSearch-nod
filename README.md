@@ -36,6 +36,7 @@ Nearly every sample application we provide will require your API Keys (clientId,
 ##Quick start
 1. Clone the repo onto your local computer.
 2. Create a new Hub Exchange application in App Center [needs link to App Center Directions]
+
 ### Application Paths 
 
         Login URL   : http://localhost:3000/login
@@ -47,6 +48,22 @@ Nearly every sample application we provide will require your API Keys (clientId,
 		* Client ID
 		* Client Secret
 		* App Signature
+
+## Touchpoints
+* App Center utilization
+	* Creating an app in App Center
+	* Defining our app's endpoints
+	* Application Keys / Signature definitions
+* Subscriber Search App build up
+	* Server-side
+		* Login URL
+		* Redirect URL
+		* Logout URL
+		* Implementing the JWT (JSON Web Token)
+	* Client-side
+		* Fuel UX implementation
+		* Fuel Platform API implementation
+		* ExactTarget SOAP API implementation
 
 ## Touchpoints
 * App Center utilization
