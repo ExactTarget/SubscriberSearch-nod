@@ -1,11 +1,11 @@
 #SubscriberSearch-nod(e)
 =================
 
-SubscriberSearch-nod is an example application which illustrates how to create a Hub Exchange application utilizing Single Sign-on (SSO) for ExactTarget's Interactive Marketing Hub.
+Subscriber Search is an sample application illustrating how to create a Hub Exchange app utilizing Single Sign-on (SSO) for ExactTarget's Interactive Marketing Hub.
 
-This sample app provides assets and examples that  demonstrate the basics of how to create a user-contextualized Subscriber Search app which implement ExactTarget's Fuel Platform.
+This sample app provides you assets and examples demonstrating the basics on "how-to" create a user-contextualized Subscriber Search app which implement ExactTarget's Fuel Platform suite of tools.
 
-Prior to working with these examples, you should feel confident using App Center [URL to App Center documentation]. App Center is the your primary interface to register as a developer and define applications upon which you can then build.
+Prior to working with these examples, you should feel confident using [App Center](http://code.exacttarget.com/devcenter/getting-started/app-center-overview). App Center is the your primary interface to register as a developer with ExactTarget and the tool you use to define apps which will integrate with the Fuel Platform.
 
 The source code for these sample applications are open sourced and the code provided is intended to quickly enable you with the core concepts of developing apps with ExactTarget.
 
