@@ -1,7 +1,7 @@
 #SubscriberSearch-nod(e)
 =================
 
-Subscriber Search is an sample application illustrating how to create a Hub Exchange app utilizing Single Sign-on (SSO) for ExactTarget's Interactive Marketing Hub.
+Subscriber Search is a sample application illustrating how to create a Hub Exchange app utilizing Single Sign-on (SSO) for ExactTarget's Interactive Marketing Hub.
 
 This sample app provides you assets and examples demonstrating the basics on "how-to" create a user-contextualized Subscriber Search app which implement ExactTarget's Fuel Platform suite of tools.
 
