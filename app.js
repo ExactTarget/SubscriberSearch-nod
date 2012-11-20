@@ -1,6 +1,6 @@
 /**
  * App dependencies.
- * Thanks to jamhul & donpark
+ * Thanks to jamhul & donpark on github
  */
 var express         = require( 'express' )
     , fs            = require( 'fs' )
@@ -10,9 +10,12 @@ var express         = require( 'express' )
     , jwt           = require( 'jwt-simple' )
     , path          = require( 'path' )
     , routes        = require( './routes' )
+    , platform      = require( './routes/platform' ) // TODO: REMOVE -> Used ONLY for initial UI buildup
     , soap          = require( './routes/soap' )
     , utils         = require( './app/utils/utils' )
     , blocks        = {}
+    , endpoints     = {}
+    , sessions      = {}
 
 // Arguments passed in from command line
 var argv        = []
@@ -32,6 +35,7 @@ for( var arg in process.argv ) {
 // Merge options from siteConf with passed in arguments
 options = utils.mergeOptions( utils.getConfig(), opts );
 
+// Define express as framework
 var app = express();
 
 // development ONLY
@@ -52,6 +56,25 @@ if( 'development' == app.get( 'env' ) ) {
     app.use( express.errorHandler() );
 }
 
+// production ONLY
+if( 'production' == app.get( 'env' ) ) {
+    console.log( 'APP IS IN PRODUCTION MODE' );
+    app.set( 'port', process.env.PORT || 3000 );
+    app.set( 'views', __dirname + '/views' );
+    app.set( 'view engine', 'hbs' );
+    app.set( 'APIKey', 'nodeSampleApp' );
+    app.use( express.favicon() );
+    app.use( express.logger() );
+    app.use( express.bodyParser() );
+    app.use( express.cookieParser() );
+    app.use( express.session( { secret: '5458a100-1d06-11e2-892e-0800200c9a61' } ) ); // generic UUID
+    app.use( express.methodOverride() );
+    app.use( app.router );
+    app.use( express.static( path.join( __dirname, 'public') ) );
+}
+
+app.use( express.cookieSession() );
+
 // Handlebars helpers
 hbs.registerHelper( 'extend', function( name, context ) {
     var block = blocks[name];
@@ -70,13 +93,29 @@ hbs.registerHelper( 'block', function( name ) {
     return val;
 });
 
+// Enable CORS
+app.all( '/*', function( req, res, next ) {
+    // Process preflight if it is OPTIONS request
+    if( 'OPTIONS' == req.method ) {
+        res.header( 'Access-Control-Allow-Origin', '*' );
+        res.header( 'Access-Control-Allow-Method', 'POST, GET, PUT, DELETE, OPTIONS' );
+        res.header( 'Access-Control-Allow-Headers', 'origin, x-requested-with, x-file-name, content-type, cache-control' );
+        res.send( 203, 'No Content' );
+    }
+
+    next();
+});
+
 // DEFINE GET ROUTES
 app.get( '/', routes.index );
+app.get( '/defineEndpoints', platform.getEndpoints );
 
 // DEFINE POST ROUTES
 app.post( '/searchSubscribers', soap.getSubscribers );
-// handle SSO JWT
+app.post( '/updateSubscriberStatus', soap.updateSubscriberStatus );
+// This route specifically handles SSO & JWT
 app.post('/login', function( req, res ) {
+    // If we don't already have a token in the request session
     if( !req.session.token ) {
         var secret          = options.settings.apiKeys[app.get('APIKey')].appSignature
             , encodedJWT    = req.body.jwt
@@ -87,6 +126,8 @@ app.post('/login', function( req, res ) {
 
         // Sanity Check for SSO via HUB
         if( decodedJWT ) {
+            //Used for inspecting the SOAP object
+            //console.log( JSON.stringify( decodedJWT, null, 4 ) );
             req.session.token = decodedJWT.request.user.oauthToken;
             req.session.internalOauthToken = decodedJWT.request.user.internalOauthToken;
             req.session.refreshToken = decodedJWT.request.user.refreshToken;
@@ -124,7 +165,6 @@ app.post('/login', function( req, res ) {
                     req.session.soap = responseData.soap;
                     req.session.rest = responseData.rest;
                     res.redirect( '/' );
-                    console.log( responseData );
                 });
             });
 
@@ -137,6 +177,7 @@ app.post('/login', function( req, res ) {
     }
 });
 
+// Define the server and the handler
 http.createServer( app ).listen( app.get( 'port' ), function() {
     console.log( "Express server listening on port " + app.get( 'port' ) );
 });

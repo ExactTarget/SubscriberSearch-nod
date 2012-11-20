@@ -18,7 +18,10 @@ define([
 
             this._columns = options.columns;
             this._formatter = options.formatter;
+            //this.start = null;
             this.count = null;
+            //this.pages: null;
+            //this.page: null;
             this.lastPageNumber = null;
             this.search = null;
 
