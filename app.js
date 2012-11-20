@@ -10,6 +10,7 @@ var express         = require( 'express' )
     , jwt           = require( 'jwt-simple' )
     , path          = require( 'path' )
     , routes        = require( './routes' )
+    , soap          = require( './routes/soap' )
     , utils         = require( './app/utils/utils' )
     , blocks        = {}
 
@@ -69,8 +70,11 @@ hbs.registerHelper( 'block', function( name ) {
     return val;
 });
 
+// DEFINE GET ROUTES
 app.get( '/', routes.index );
 
+// DEFINE POST ROUTES
+app.post( '/searchSubscribers', soap.getSubscribers );
 // handle SSO JWT
 app.post('/login', function( req, res ) {
     if( !req.session.token ) {

@@ -12,6 +12,8 @@ define([
             _.bindAll( this
                 , 'columns'
                 , 'data'
+                , 'parse'
+                , '_useDataCallback'
             );
 
             this._columns = options.columns;
@@ -20,9 +22,6 @@ define([
             this.lastPageNumber = null;
             this.search = null;
 
-            // We'll be caching the FuelUX datagrid callback so we can
-            // call it once we've received our SOAP results of
-            // subscribers
             this.bind( 'reset' , this._useDataCallback );
         }
 
@@ -42,18 +41,48 @@ define([
             });
         }
 
-        // TODO: We'll define this in the next step in app.js
         , url: '//localhost:3000/searchSubscribers'
 
-        // Required by the datagrid
         , columns: function() {
             return this._columns;
         }
 
-        // Required by the datagrid
         , data: function( options, callback ) {
             this.dataCallback = callback;
             this.fetch({ type: 'POST', data: { searchTerm: options.search }});
+        }
+
+        , parse: function( response ) {
+            var parsedData = []
+                dataLength = response.data.length
+                ;
+
+            this.count = response.total;
+            this.lastPageNumber = 0; // TODO
+
+            for( var i = 0; i < dataLength; i++ ) {
+                var attrObj = {};
+                for( var a = 0; a < response.data[i]['Attributes'].length; a++ ) {
+                    var attrName = response.data[i]['Attributes'][a]['Name'];
+                    var attrValue = response.data[i]['Attributes'][a]['Value'];
+                    attrObj[attrName] = attrValue;
+                }
+
+                var tmpObj = {
+                    emailAddress: response.data[i]['EmailAddress']
+                    , subscriberId: response.data[i]['ID']
+                    , status: response.data[i]['Status']
+                    , created: response.data[i]['CreatedDate']
+                    , subscriberKey: response.data[i]['SubscriberKey']
+                    , emailTypePreference: response.data[i]['EmailTypePreference']
+                    , firstName: attrObj['First Name']
+                    , lastName: attrObj['Last Name']
+                };
+
+                parsedData.push( tmpObj );
+            }
+
+            return parsedData;
         }
     });
 });
