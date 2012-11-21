@@ -13,6 +13,7 @@ define([
                 , 'columns'
                 , 'data'
                 , 'parse'
+                , '_convertName'
                 , '_useDataCallback'
             );
 
@@ -78,14 +79,22 @@ define([
                     , created: response.data[i]['CreatedDate']
                     , subscriberKey: response.data[i]['SubscriberKey']
                     , emailTypePreference: response.data[i]['EmailTypePreference']
-                    , firstName: attrObj['First Name']
-                    , lastName: attrObj['Last Name']
+                    , firstName: this._convertName( attrObj['First Name'] )
+                    , lastName: this._convertName( attrObj['Last Name'] )
                 };
 
                 parsedData.push( tmpObj );
             }
 
             return parsedData;
+        }
+
+        , _convertName: function( namePart ) {
+            if( !_.isString( namePart ) ) {
+                return '';
+            } else {
+                return namePart;
+            }
         }
     });
 });
