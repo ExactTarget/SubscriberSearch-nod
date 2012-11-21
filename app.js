@@ -120,8 +120,8 @@ app.post('/login', function( req, res ) {
         var secret          = options.settings.apiKeys[app.get('APIKey')].appSignature
             , encodedJWT    = req.body.jwt
             , decodedJWT    = jwt.decode(encodedJWT, secret)
-            , appId         = options.settings.apiKeys[app.get( 'APIKey' )].appId
-            , appSecret     = options.settings.apiKeys[app.get( 'APIKey' )].appSecret
+            , clientId      = options.settings.apiKeys[app.get( 'APIKey' )].clientId
+            , clientSecret  = options.settings.apiKeys[app.get( 'APIKey' )].clientSecret
             ;
 
         // Sanity Check for SSO via HUB

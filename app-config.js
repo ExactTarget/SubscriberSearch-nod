@@ -4,12 +4,12 @@ exports.settings = {
     , 'apiKeys'     : {
         // LocalNodeDemo App
         localNodeApp: {
-            'appId'       : ''
-            , 'appSecret'   : ''
-            , 'appSignature': ''
+            'clientId'          : '' // TODO: Paste your clientId in the quotes
+            , 'clientSecret'    : '' // TODO: Paste your clientSecret in the quotes
+            , 'appSignature'    : '' // TODO: Paste your appSignature in the quotes
         }
     }
-    , 'debug'       : ( process.env.NODE_ENV !== 'production' || process.env['DEBUG'] )
+    , 'debug' : ( process.env.NODE_ENV !== 'production' || process.env['DEBUG'] )
         ? true
         : false
 };

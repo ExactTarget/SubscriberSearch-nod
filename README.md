@@ -11,6 +11,8 @@ The source code for these sample applications are open sourced and the code prov
 
 The Subscriber Search app you'll be building offers beneficial functionality; however the Sample Apps should be considered proof of concept style coding and there may additional security / performance steps that are outside the scope of it's purpose.
 
+![Subscriber Search Sample App](http://db.tt/jO7vpfAM)
+
 ##Prerequisites (basic understanding of the following):
 * (x)HTML(5)
 * CSS(3)
