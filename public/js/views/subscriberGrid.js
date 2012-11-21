@@ -27,8 +27,10 @@ define([
                 ]
                 , formatter: function( items ) {
                     $.each( items, function( index, item ) {
+                        //Handle empty name
+                        if( '' == item.get( 'firstName' ) && '' == item.get( 'lastName' ) ) { var fullNameEmpty = 'N/A'; }
                         item.emailAddress = item.get( 'emailAddress' );
-                        item.fullName = item.get( 'firstName' ) + ' ' + item.get( 'lastName' );
+                        item.fullName = ( fullNameEmpty ) ? fullNameEmpty : item.get( 'firstName' ) + ' ' + item.get( 'lastName' );
                         item.viewDetails = '<button type="button" class="btn btn-primary viewDetails" id="' + item.get( 'subscriberId' ) + '">View Details</button>';
                         item.status = item.get( 'status' );
                     });

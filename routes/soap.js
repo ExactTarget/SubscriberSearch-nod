@@ -71,14 +71,19 @@ exports.getSubscribers = function( req, res ) {
             //console.log( 'XML Data: ', data );
             var parser = new xml2js.Parser({ignoreAttrs: true, explicitArray: false});
             data = parser.parseString( data, function( err, result ) {
+                //TODO Handle xml2js parse error
+
+                var soapEnvelope = result['soap:Envelope'];
+                var soapBody = soapEnvelope['soap:Body'];
                 //console.log( util.inspect( result, false, null ) );
                 //Make sure we have data before trying to parse
-                if( result['soap:Envelope']['soap:Body']['RetrieveResponseMsg'].hasOwnProperty( 'Results' ) ) {
-                    //console.log( 'has property' );
-                    responseData.total = result['soap:Envelope']['soap:Body']['RetrieveResponseMsg']['Results'].length;
-                    responseData.data = result['soap:Envelope']['soap:Body']['RetrieveResponseMsg']['Results'];
+                if( soapBody.hasOwnProperty( 'soap:Fault' ) ) {
+                    responseData.error = true;
+                    responseData.errorMsg = soapBody['soap:Fault']['faultstring'];
+                } else if( soapBody['RetrieveResponseMsg'].hasOwnProperty( 'Results' ) ) {
+                    responseData.total = soapBody['RetrieveResponseMsg']['Results'].length;
+                    responseData.data = soapBody['RetrieveResponseMsg']['Results'];
                 } else {
-                    //console.log( 'does not have property' );
                     responseData.total = 0;
                     responseData.data = [];
                 }
@@ -86,13 +91,14 @@ exports.getSubscribers = function( req, res ) {
                 if( toString.call( responseData.data ) != '[object Array]' ) {
                     responseData.data = [ responseData.data ];
                 }
-
-                //console.log( responseData );
-                
             });
 
-            // handle data, send back to client using res
-            res.json(200, { total: responseData.total, data: responseData.data } );
+            // handle response (either error or data)
+            if( responseData.error ) {
+                res.json( 401, { error: responseData.errorMsg } );
+            } else {
+                res.json( 200, { total: responseData.total, data: responseData.data } );
+            }
         } );
     } );
 
