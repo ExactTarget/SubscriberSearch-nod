@@ -22,12 +22,8 @@ define([
                 columns: [
                     { property: 'emailAddress', label: 'Email Address', sortable: true },
                     { property: 'fullName', label: 'Full Name', sortable: true },
-                    //{ property: 'subscriberKey', label: 'Subscriber Key', sortable: false },
                     { property: 'viewDetails', label: '', sortable: false },
-                    //{ property: 'isValid', label: '', sortable: false },
                     { property: 'status', label: 'Status', sortable: true },
-                    //{ property: 'emailTypePreference', label: 'Email Type', sortable: true },
-                    //{ property: 'created', label: 'Created', sortable: true}
                 ]
                 , formatter: function( items ) {
                     $.each( items, function( index, item ) {
