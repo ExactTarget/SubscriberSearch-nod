@@ -45,6 +45,20 @@ Nearly every sample application we provide will require your API Keys (clientId,
 
 * Create a new Hub Exchange application in [App Center](http://code.exacttarget.com/devcenter/getting-started/app-center-overview/registering-app)
 
+### App Type
+
+		Hub Exchange (Alpha)
+
+### Meta Data
+	
+		Name		: Subscriber Search
+		Descrip.	: [your choice]
+		Namespace	: [your choice] (I typically use: Example: bdean-subscribersearch [first initial last name-appname)
+	
+### Integration
+
+		Select the stack where your ExactTarget account resides
+
 ### Application Paths 
 
         Login URL   : http://localhost:3000/login
