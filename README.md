@@ -1,15 +1,17 @@
-#SubscriberSearch-nod
+#SubscriberSearch-nod(e)
 =================
 
-SubscriberSearch-nod is an example application which illustrates how to create a Hub Exchange application utilizing Single Sign-on (SSO) for ExactTarget's Interactive Marketing Hub.
+Subscriber Search is a sample application illustrating how to create a Hub Exchange app utilizing Single Sign-on (SSO) for ExactTarget's Interactive Marketing Hub.
 
-This sample app provides assets and examples that  demonstrate the basics of how to create a user-contextualized Subscriber Search app which implement ExactTarget's Fuel Platform.
+This sample app provides you assets and examples demonstrating the basics on "how-to" create a user-contextualized Subscriber Search app which implement ExactTarget's Fuel Platform suite of tools.
 
-Prior to working with these exempts, you should thoroughly feel confident in using App Center [URL to App Center documentation]. App Center is the your primary interface to register as a developer and define applications upon which you can then build.
+Prior to working with these examples, you should feel confident using [App Center](http://code.exacttarget.com/devcenter/getting-started/app-center-overview). App Center is the your primary interface to register as a developer with ExactTarget and the tool you use to define apps which will integrate with the Fuel Platform.
 
 The source code for these sample applications are open sourced and the code provided is intended to quickly enable you with the core concepts of developing apps with ExactTarget.
 
-The Subscriber Search app you'll be building through these tutorials offer beneficial functionality; however these tutorials should be considered proof of concept style coding and there may additional security / performance steps that are outside the scope of it's purpose.
+The Subscriber Search app you'll be building offers beneficial functionality; however the Sample Apps should be considered proof of concept style coding and there may additional security / performance steps that are outside the scope of it's purpose.
+
+![Subscriber Search Sample App](http://db.tt/jO7vpfAM)
 
 ##Prerequisites (basic understanding of the following):
 * (x)HTML(5)
@@ -26,16 +28,22 @@ The Subscriber Search app you'll be building through these tutorials offer benef
 * Volo installed locally
 
 ##Running Sample Apps
-Nearly every sample application we provide will require your API Keys (clientId, clientSecret) and the proper understanding of how to use these assets, please make sure you take time to review our [App Center tutorial].
+Nearly every sample application we provide will require your API Keys (clientId, clientSecret) and the proper understanding of how to use these assets, please make sure you take time to review our [App Center tutorial](http://code.exacttarget.com/devcenter/getting-started/app-center-overview "App Center Overview").
 
 ##Requirements
-* Access to App Center on http://code.exacttarget.com
+* An ExactTarget Production Account
+* Access to App Center on
+* [http://code.exacttarget.com](http://code.exacttarget.com)
 * Node.js v0.8.9+
-* ExpressJS (framework understanding)
+* ExpressJS
 
 ##Quick start
 * Clone the repo onto your local computer.
-* Create a new Hub Exchange application in App Center [needs link to App Center Directions]
+
+		- (http): https://github.com/ExactTarget/SubscriberSearch-nod.git
+		- (ssh): git@github.com:ExactTarget/SubscriberSearch-nod.git
+
+* Create a new Hub Exchange application in [App Center](http://code.exacttarget.com/devcenter/getting-started/app-center-overview/registering-app)
 
 ### Application Paths 
 
@@ -71,4 +79,4 @@ Nearly every sample application we provide will require your API Keys (clientId,
 		* Fuel Platform API implementation
 		* ExactTarget SOAP API implementation
 
-For more information about setting up an applcation in App Center, please see http://code.exacttarget.com/devcenter/????
+For more information about setting up an applcation in App Center, please see [http://code.exacttarget.com/devcenter/getting-started/app-center-overview/](http://code.exacttarget.com/devcenter/getting-started/app-center-overview/)
