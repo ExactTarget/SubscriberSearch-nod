@@ -3,15 +3,13 @@
   "subdomain": "subscriberSearchNode",
   "private": true,
   "description": "ExactTarget Fuel Platform Subscriber Search Sample App",
-  "author": "ExactTarget <devenablement@exacttarget.com>",
   "version": "0.0.1-19",
   "scripts": {
     "start": "node app"
   },
   "maintainers": [
     {
-      "name": "Benjamin Dean",
-      "email": "bdean@exacttarget.com"
+      "name": "Benjamin Dean"
     }
   ],
   "engines": {
