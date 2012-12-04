@@ -20,7 +20,8 @@
   "dependencies": {
     "express": "3.0.0rc4",
     "hbs": "~1.0.5",
-    "jwt-simple": "~0.1.0"
+    "jwt-simple": "~0.1.0",
+    "xml2js": ">=0.2.x"
   },
   "volo": {
     "baseUrl": "public/vendor",
