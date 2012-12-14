@@ -1,0 +1,158 @@
+<!DOCTYPE html><html><head><title>README</title><meta http-equiv="Content-Type" content="text/html" charset="UTF-8"><link rel="stylesheet" media="all" href="./docco.css"></head><body><div id="container"><div id="background"></div><div id="jump_to">Jump To &hellip;<div id="jump_wrapper"><div id="jump_page"><a href="./index.html" class="source"><span class="file_name">README</span></a><a href="./app-config.js.html" class="source "><span class="base_path">. / </span><span class="file_name">app-config.js</span></a><a href="./app.js.html" class="source "><span class="base_path">. / </span><span class="file_name">app.js</span></a></div></div></div><table cellpadding="0" cellspacing="0"><thead><tr><th class="docs"></th><th class="code"></th></tr></thead><tbody><tr id="section"><td class="docs"><h1>subscriberSearchNode
+</h1>
+<p>ExactTarget Fuel Platform Subscriber Search Sample App</p>
+<h3>Version</h3><p>0.0.1-19</p>
+<h3>Dependencies </h3>
+<ul>
+    <li><b>express </b><span>3.0.0rc4</span></li>
+    <li><b>hbs </b><span>~1.0.5</span></li>
+    <li><b>jwt-simple </b><span>~0.1.0</span></li>
+    <li><b>xml2js </b><span>&gt;=0.2.x</span></li>
+</ul>
+
+<h3>Script Documentation</h3>
+<ul>
+    <li><a href="app.js.html" title="/app.js">/app.js</a></li>
+    <li><a href="app-config.js.html" title="/app-config.js">/app-config.js</a></li>
+    <li><a href="utils.js.html" title="/app/utils/utils.js">/app/utils/utils.js</a></li>
+    <li><a href="base.js.html" title="/public/base.js">/public/base.js</a></li>
+    <li><a href="endpointsModel.js.html" title="/public/js/data/endpointsModel.js">/public/js/data/endpointsModel.js</a></li>
+    <li><a href="subscriberCollection.js.html" title="/public/js/data/subscriberCollection.js">/public/js/data/subscriberCollection.js</a></li>
+    <li><a href="subscriberModel.js.html" title="/public/js/data/subscriberModel.js">/public/js/data/subscriberModel.js</a></li>
+    <li><a href="dashboardView.js.html" title="/public/js/views/dashboardView.js">/public/js/views/dashboardView.js</a></li>
+    <li><a href="subscriberDetails.js.html" title="/public/js/views/subscriberDetails.js">/public/js/views/subscriberDetails.js</a></li>
+    <li><a href="subscriberGrid.js.html" title="/public/js/views/subscriberGrid.js">/public/js/views/subscriberGrid.js</a></li>
+    <li><a href="index.hbs.html" title="/views/index.hbs">/views/index.hbs</a></li>
+    <li><a href="layout.hbs.html" title="/views/layout.hbs">/views/layout.hbs</a></li>
+</ul>
+</td><td id="content" class="code"><h1>#SubscriberSearch-nod(e)</h1>
+
+<p>The Subscriber Search sample application illustrates how to create a Hub Exchange app utilizing Single Sign-on (SSO) for ExactTarget's Interactive Marketing Hub.</p>
+
+<p>This sample app provides you assets and examples demonstrating the basics on creating a user-contextualized Subscriber Search app which implements ExactTarget's Fuel Platform suite of tools.</p>
+
+<p>Prior to working with these examples, you should feel confident using <a href="http://code.exacttarget.com/devcenter/getting-started/app-center-overview">App Center</a>. App Center is  your primary interface to register as a developer with ExactTarget and the tool you use to define apps which will integrate with the Fuel Platform.</p>
+
+<p>The source code for these sample applications are open sourced and the code provided is intended to quickly enable you with the core concepts of developing apps with ExactTarget.</p>
+
+<p>The Subscriber Search app  offers beneficial functionality. However, the Sample Apps should be considered proof-of-concept style coding and there may additional security/performance steps outside the scope of this purpose.</p>
+
+<p><img src="http://image.exct.net/lib/fe6a1570776007757416/m/1/SubscriberSearch.png" alt="Subscriber Search Sample App" title="" /></p>
+
+<h2>Prerequisites (basic understanding of the following):</h2>
+
+<ul>
+<li>(x)HTML(5)</li>
+<li>CSS(3)</li>
+<li>JavaScript</li>
+<li>AJAX, REST and RESTful interactions</li>
+<li>SOAP</li>
+<li>Backbone.js (client-side JS MVC tool)</li>
+<li>Underscore.js (Backbone's only dependency)</li>
+<li>jQuery</li>
+<li>Node.js installed locally</li>
+</ul>
+
+<h2>Nice-to-haves</h2>
+
+<ul>
+<li>Volo installed locally</li>
+</ul>
+
+<h2>Running Sample Apps</h2>
+
+<p>Nearly every sample application we provide will require your API Keys (clientId, clientSecret) and the proper understanding of how to use these asset. Please make sure you take time to review our <a href="http://code.exacttarget.com/devcenter/getting-started/app-center-overview" title="App Center Overview">App Center tutorial</a>.</p>
+
+<h2>Requirements</h2>
+
+<ul>
+<li>An ExactTarget Production Account</li>
+<li>Access to App Center on</li>
+<li><a href="http://code.exacttarget.com">http://code.exacttarget.com</a></li>
+<li>Node.js v0.8.9+</li>
+<li>ExpressJS</li>
+</ul>
+
+<h2>Quick start</h2>
+
+<ul>
+<li><p>Clone the repo onto your local computer.</p>
+
+<pre><code>- (http): https://github.com/ExactTarget/SubscriberSearch-nod.git
+- (ssh): git@github.com:ExactTarget/SubscriberSearch-nod.git
+</code></pre></li>
+<li><p>Create a new Hub Exchange application in <a href="http://code.exacttarget.com/devcenter/getting-started/app-center-overview/registering-app">App Center</a></p></li>
+</ul>
+
+<h3>App Type</h3>
+
+<pre><code>    Hub Exchange (Alpha)
+</code></pre>
+
+<h3>Meta Data</h3>
+
+<pre><code>    Name        : Subscriber Search
+    Descrip.    : [your choice]
+    Namespace   : [your choice] (I typically use: Example: bdean-subscribersearch [first initial last name-appname)
+</code></pre>
+
+<h3>Integration</h3>
+
+<pre><code>    Select the stack where your ExactTarget account resides
+</code></pre>
+
+<h3>Application Paths</h3>
+
+<pre><code>    Login URL   : http://localhost:3000/login
+    Home URL    : http://localhost:3000
+    Logout URL  : http://localhost:3000/logout
+</code></pre>
+
+<ul>
+<li>Publish your app in app center (this makes it available in the HUB</li>
+<li><p>Update the app-config.js file with the following app information (values for these come from App Center):</p>
+
+<pre><code>Client ID
+Client Secret
+App Signature
+</code></pre></li>
+<li><p>Commit your changes</p></li>
+<li>Start your app locally by running the command:
+    node app</li>
+<li>Login to the Interactive Marketing Hub and then click your app</li>
+</ul>
+
+<h2>Touchpoints</h2>
+
+<ul>
+<li>App Center utilization
+<ul><li>Creating an app in App Center</li>
+<li>Defining our app's endpoints</li>
+<li>Application Keys / Signature definitions</li></ul></li>
+<li>Subscriber Search App build up
+<ul><li>Server-side
+<ul><li>Login URL</li>
+<li>Redirect URL</li>
+<li>Logout URL</li>
+<li>Implementing the JWT (JSON Web Token)</li></ul></li>
+<li>Client-side
+<ul><li>Fuel UX implementation</li>
+<li>Fuel Platform API implementation</li>
+<li>ExactTarget SOAP API implementation</li></ul></li></ul></li>
+</ul>
+
+<h2>Copyright and license</h2>
+
+<p>Copyright (c) 2012 ExactTarget</p>
+
+<p>Licensed under the MIT License (the "License");
+you may not use this work except in compliance with the License.
+You may obtain a copy of the License in the COPYING file.</p>
+
+<p>Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.</p>
+
+<p>For more information about setting up an applcation in App Center, please see <a href="http://code.exacttarget.com/devcenter/getting-started/app-center-overview/">http://code.exacttarget.com/devcenter/getting-started/app-center-overview/</a></p>  </td></tr></tbody></table><div id="generated">generated Wed Dec 12 2012 13:32:34 GMT-0500 (EST)  </div></div></body></html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>  <html> <head>   <title>subscriberCollection.js</title>   <meta http-equiv="content-type" content="text/html; charset=UTF-8">   <link rel="stylesheet" media="all" href="docco.css" /> </head> <body>   <div id="container">     <div id="background"></div>            <div id="jump_to">         Jump To &hellip;         <div id="jump_wrapper">           <div id="jump_page">                                           <a class="source" href="app-config.html">                 app-config.js               </a>                                           <a class="source" href="app.html">                 app.js               </a>                                           <a class="source" href="app-config.html">                 app-config.js               </a>                                           <a class="source" href="base.html">                 base.js               </a>                                           <a class="source" href="endpointsModel.html">                 endpointsModel.js               </a>                                           <a class="source" href="subscriberCollection.html">                 subscriberCollection.js               </a>                                           <a class="source" href="subscriberModel.html">                 subscriberModel.js               </a>                                           <a class="source" href="dashboardView.html">                 dashboardView.js               </a>                                           <a class="source" href="subscriberDetails.html">                 subscriberDetails.js               </a>                                           <a class="source" href="subscriberGrid.html">                 subscriberGrid.js               </a>                                           <a class="source" href="text.html">                 text.js               </a>                                           <a class="source" href="index.html">                 index.js               </a>                                           <a class="source" href="platform.html">                 platform.js               </a>                                           <a class="source" href="soap.html">                 soap.js               </a>                                           <a class="source" href="index.html">                 index.js               </a>                                           <a class="source" href="layout.html">                 layout.js               </a>                        </div>         </div>       </div>          <table cellpadding="0" cellspacing="0">       <thead>         <tr>           <th class="docs">             <h1>               subscriberCollection.js             </h1>           </th>           <th class="code">           </th>         </tr>       </thead>       <tbody>                               <tr id="section-1">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-1">&#182;</a>               </div>               <h1>Subscriber Collection</h1>
+
+<p>This acts as the datasource for the Fuel UX datagrid. That is not
+the recommended use and I've obfuscated the expected adapter module
+which should remove this advanced implementation.</p>             </td>             <td class="code">               <div class="highlight"><pre><span class="nx">define</span><span class="p">([</span>
+    <span class="s1">&#39;backbone&#39;</span>
+    <span class="p">,</span> <span class="s1">&#39;js/data/subscriberModel&#39;</span>
+<span class="p">],</span> <span class="kd">function</span><span class="p">(</span>
+    <span class="nx">Backbone</span>
+    <span class="p">,</span> <span class="nx">SubscriberModel</span>
+<span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">Backbone</span><span class="p">.</span><span class="nx">Collection</span><span class="p">.</span><span class="nx">extend</span><span class="p">({</span>
+        <span class="nx">model</span><span class="o">:</span> <span class="nx">SubscriberModel</span>
+        <span class="p">,</span> <span class="nx">initialize</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">options</span> <span class="p">)</span> <span class="p">{</span>
+
+            <span class="nx">_</span><span class="p">.</span><span class="nx">bindAll</span><span class="p">(</span> <span class="k">this</span>
+                <span class="p">,</span> <span class="s1">&#39;columns&#39;</span>
+                <span class="p">,</span> <span class="s1">&#39;data&#39;</span>
+                <span class="p">,</span> <span class="s1">&#39;parse&#39;</span>
+                <span class="p">,</span> <span class="s1">&#39;_convertName&#39;</span>
+                <span class="p">,</span> <span class="s1">&#39;_useDataCallback&#39;</span>
+            <span class="p">);</span></pre></div>             </td>           </tr>                               <tr id="section-2">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-2">&#182;</a>               </div>               <p>This value is passed in from the creation (and is expected). No defaults
+are provided here, but could be.</p>             </td>             <td class="code">               <div class="highlight"><pre>            <span class="k">this</span><span class="p">.</span><span class="nx">_columns</span> <span class="o">=</span> <span class="nx">options</span><span class="p">.</span><span class="nx">columns</span><span class="p">;</span></pre></div>             </td>           </tr>                               <tr id="section-3">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-3">&#182;</a>               </div>               <p>This is passed in from the creation (and is expected). No defaults
+are provided here, but could be.</p>             </td>             <td class="code">               <div class="highlight"><pre>            <span class="k">this</span><span class="p">.</span><span class="nx">_formatter</span> <span class="o">=</span> <span class="nx">options</span><span class="p">.</span><span class="nx">formatter</span><span class="p">;</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">count</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">lastPageNumber</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">search</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+
+            <span class="k">this</span><span class="p">.</span><span class="nx">bind</span><span class="p">(</span> <span class="s1">&#39;reset&#39;</span> <span class="p">,</span> <span class="k">this</span><span class="p">.</span><span class="nx">_useDataCallback</span> <span class="p">);</span>
+        <span class="p">}</span></pre></div>             </td>           </tr>                               <tr id="section-4">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-4">&#182;</a>               </div>               <p>Forcing the collection to always only have one page of data. Will
+paginate this data later (since SOAP doesn't handle the pagination)</p>             </td>             <td class="code">               <div class="highlight"><pre>        <span class="p">,</span> <span class="nx">_useDataCallback</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+            <span class="k">if</span><span class="p">(</span> <span class="k">this</span><span class="p">.</span><span class="nx">_formatter</span> <span class="p">)</span> <span class="p">{</span>
+                <span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">models</span>
+                <span class="k">this</span><span class="p">.</span><span class="nx">_formatter</span><span class="p">(</span> <span class="nx">data</span> <span class="p">);</span>
+            <span class="p">}</span>
+
+            <span class="k">this</span><span class="p">.</span><span class="nx">dataCallback</span><span class="p">({</span>
+                <span class="nx">data</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">models</span>
+                <span class="p">,</span> <span class="nx">start</span><span class="o">:</span> <span class="mi">0</span>
+                <span class="p">,</span> <span class="nx">end</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">models</span><span class="p">.</span><span class="nx">length</span>
+                <span class="p">,</span> <span class="nx">count</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">models</span><span class="p">.</span><span class="nx">length</span>
+                <span class="p">,</span> <span class="nx">pages</span><span class="o">:</span> <span class="mi">1</span>
+                <span class="p">,</span> <span class="nx">page</span><span class="o">:</span> <span class="mi">1</span>
+            <span class="p">});</span>
+        <span class="p">}</span>
+
+        <span class="p">,</span> <span class="nx">url</span><span class="o">:</span> <span class="s1">&#39;//localhost:3000/searchSubscribers&#39;</span>
+
+        <span class="p">,</span> <span class="nx">columns</span><span class="o">:</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">_columns</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="p">,</span> <span class="nx">data</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">options</span><span class="p">,</span> <span class="nx">callback</span> <span class="p">)</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">dataCallback</span> <span class="o">=</span> <span class="nx">callback</span><span class="p">;</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">fetch</span><span class="p">({</span> <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;POST&#39;</span><span class="p">,</span> <span class="nx">data</span><span class="o">:</span> <span class="p">{</span> <span class="nx">searchTerm</span><span class="o">:</span> <span class="nx">options</span><span class="p">.</span><span class="nx">search</span> <span class="p">}});</span>
+        <span class="p">}</span></pre></div>             </td>           </tr>                               <tr id="section-5">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-5">&#182;</a>               </div>               <p>The parse could be handled by the Model instead of the Collection
+(and probably should, later change).</p></td>             <td class="code">               <div class="highlight"><pre>        <span class="p">,</span> <span class="nx">parse</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">response</span> <span class="p">)</span> <span class="p">{</span>
+            <span class="kd">var</span> <span class="nx">parsedData</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="nx">dataLength</span> <span class="o">=</span> <span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">length</span>
+                <span class="p">;</span>
+
+            <span class="k">this</span><span class="p">.</span><span class="nx">count</span> <span class="o">=</span> <span class="nx">response</span><span class="p">.</span><span class="nx">total</span><span class="p">;</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">lastPageNumber</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="c1">// TODO</span>
+
+            <span class="k">for</span><span class="p">(</span> <span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="nx">dataLength</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span> <span class="p">)</span> <span class="p">{</span>
+                <span class="kd">var</span> <span class="nx">attrObj</span> <span class="o">=</span> <span class="p">{};</span>
+                <span class="k">for</span><span class="p">(</span> <span class="kd">var</span> <span class="nx">a</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">a</span> <span class="o">&lt;</span> <span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">[</span><span class="nx">i</span><span class="p">][</span><span class="s1">&#39;Attributes&#39;</span><span class="p">].</span><span class="nx">length</span><span class="p">;</span> <span class="nx">a</span><span class="o">++</span> <span class="p">)</span> <span class="p">{</span>
+                    <span class="kd">var</span> <span class="nx">attrName</span> <span class="o">=</span> <span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">[</span><span class="nx">i</span><span class="p">][</span><span class="s1">&#39;Attributes&#39;</span><span class="p">][</span><span class="nx">a</span><span class="p">][</span><span class="s1">&#39;Name&#39;</span><span class="p">];</span>
+                    <span class="kd">var</span> <span class="nx">attrValue</span> <span class="o">=</span> <span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">[</span><span class="nx">i</span><span class="p">][</span><span class="s1">&#39;Attributes&#39;</span><span class="p">][</span><span class="nx">a</span><span class="p">][</span><span class="s1">&#39;Value&#39;</span><span class="p">];</span>
+                    <span class="nx">attrObj</span><span class="p">[</span><span class="nx">attrName</span><span class="p">]</span> <span class="o">=</span> <span class="nx">attrValue</span><span class="p">;</span>
+                <span class="p">}</span>
+
+                <span class="kd">var</span> <span class="nx">tmpObj</span> <span class="o">=</span> <span class="p">{</span>
+                    <span class="nx">emailAddress</span><span class="o">:</span> <span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">[</span><span class="nx">i</span><span class="p">][</span><span class="s1">&#39;EmailAddress&#39;</span><span class="p">]</span>
+                    <span class="p">,</span> <span class="nx">subscriberId</span><span class="o">:</span> <span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">[</span><span class="nx">i</span><span class="p">][</span><span class="s1">&#39;ID&#39;</span><span class="p">]</span>
+                    <span class="p">,</span> <span class="nx">status</span><span class="o">:</span> <span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">[</span><span class="nx">i</span><span class="p">][</span><span class="s1">&#39;Status&#39;</span><span class="p">]</span>
+                    <span class="p">,</span> <span class="nx">created</span><span class="o">:</span> <span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">[</span><span class="nx">i</span><span class="p">][</span><span class="s1">&#39;CreatedDate&#39;</span><span class="p">]</span>
+                    <span class="p">,</span> <span class="nx">subscriberKey</span><span class="o">:</span> <span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">[</span><span class="nx">i</span><span class="p">][</span><span class="s1">&#39;SubscriberKey&#39;</span><span class="p">]</span>
+                    <span class="p">,</span> <span class="nx">emailTypePreference</span><span class="o">:</span> <span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">[</span><span class="nx">i</span><span class="p">][</span><span class="s1">&#39;EmailTypePreference&#39;</span><span class="p">]</span>
+                    <span class="p">,</span> <span class="nx">firstName</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">_convertName</span><span class="p">(</span> <span class="nx">attrObj</span><span class="p">[</span><span class="s1">&#39;First Name&#39;</span><span class="p">]</span> <span class="p">)</span>
+                    <span class="p">,</span> <span class="nx">lastName</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">_convertName</span><span class="p">(</span> <span class="nx">attrObj</span><span class="p">[</span><span class="s1">&#39;Last Name&#39;</span><span class="p">]</span> <span class="p">)</span>
+                <span class="p">};</span>
+
+                <span class="nx">parsedData</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span> <span class="nx">tmpObj</span> <span class="p">);</span>
+            <span class="p">}</span>
+
+            <span class="k">return</span> <span class="nx">parsedData</span><span class="p">;</span>
+        <span class="p">}</span></pre></div>             </td>           </tr>                               <tr id="section-6">             <td class="docs">               <div class="pilwrap">                 <a class="pilcrow" href="#section-6">&#182;</a>               </div>               <p>To make sure we're handling non-existent data in the UI</p>             </td>             <td class="code">               <div class="highlight"><pre>        <span class="p">,</span> <span class="nx">_convertName</span><span class="o">:</span> <span class="kd">function</span><span class="p">(</span> <span class="nx">namePart</span> <span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span><span class="p">(</span> <span class="o">!</span><span class="nx">_</span><span class="p">.</span><span class="nx">isString</span><span class="p">(</span> <span class="nx">namePart</span> <span class="p">)</span> <span class="p">)</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="s1">&#39;&#39;</span><span class="p">;</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="nx">namePart</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">});</span>
+<span class="p">});</span>
+
+</pre></div>             </td>           </tr>                </tbody>     </table>   </div> </body> </html> 
